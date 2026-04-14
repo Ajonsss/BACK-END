@@ -1,10 +1,10 @@
-import mysql from "mysql2/promise.js"
+import mysql from "mysql2/promise.js";
 
 const pool = mysql.createPool({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: "",
-    database: process.env.DATABASE
-})
+    host: "localhost",         // <-- hardcoded
+    user: "root",              // <-- hardcoded
+    password: "", 
+    database: "andraedb"      // <-- hardcoded (assuming this is what you named it)
+});
 
 export default pool;
