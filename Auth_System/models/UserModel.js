@@ -38,9 +38,9 @@ export const createUser = async (userProfile, email, password) => {
     const salt = bcrypt.genSaltSync(10);
     const newPassword = bcrypt.hashSync(password, salt);
 
-
+    //This is what was used to connect the Auth System to the Legacy System
     const response = await fetch(
-        `https://ais-simulated-legacy.onrender.com/api/studnets`,{
+        `http://localhost:4000/auth/register`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,6 +48,7 @@ export const createUser = async (userProfile, email, password) => {
             body: JSON.stringify(userProfile)
         }
     );
+    console.log(response)
     const result = await response.json();
     // Insert ALL fields into the database
     const [newUser] = await pool.query(
